@@ -1,17 +1,18 @@
 # CodeSidekick
 
-> A Chrome Side Panel companion for coding practice and mock interviews.
+> A Chrome Side Panel companion for coding, aptitude, reasoning, verbal, MCQs, and interview practice.
 
 CodeSidekick is designed around a simple idea: **help the learner think before showing the answer**.
 
 ## Current features
 
 - Chrome Manifest V3 Side Panel
-- Problem + code input
-- Progressive hint / approach / debugging / complexity actions
+- Universal question + answer/working input
+- AI hints, explanations, answer checking, step-by-step solving, debugging, and complexity analysis
 - Draft persistence with `chrome.storage.local`
 - Optional FastAPI-compatible backend
 - Built-in demo mode when no backend is configured
+- Multi-domain local MCQ lab: Maths, Reasoning, English, DSA, DBMS, OS, CN, OOP, Python
 - Human, lightweight UI with no page injection or DOM manipulation
 
 ## Install locally
@@ -30,7 +31,7 @@ The extension sends:
 ```json
 POST /coach
 {
-  "mode": "hint | approach | debug | complexity",
+  "mode": "hint | approach | debug | complexity | solve | explain | check",
   "problem": "...",
   "code": "...",
   "language": "Python"
@@ -50,6 +51,7 @@ Keep provider API keys on the backend. Do not put secrets in the Chrome extensio
 Next additions should be:
 
 - Hint ladder: nudge → stronger hint → pseudocode → solution
+- More aptitude/reasoning/verbal question packs
 - Practice history
 - Mock interview timer
 - Saved problem sets
@@ -61,4 +63,4 @@ Next additions should be:
 
 ## Scope
 
-CodeSidekick is intended for practice, learning, and mock interviews. It does not attempt to bypass assessment proctoring, focus detection, or platform monitoring.
+CodeSidekick is intended for practice, learning, mock interviews, aptitude preparation, and general study. It is designed as a learning companion and does not attempt to bypass assessment proctoring, focus detection, or platform monitoring. It does not attempt to bypass assessment proctoring, focus detection, or platform monitoring.
