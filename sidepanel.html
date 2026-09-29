@@ -10,72 +10,79 @@
   <header class="topbar">
     <div>
       <div class="brand"><span class="brand-mark">CS</span><span>CodeSidekick</span></div>
-      <div class="sub">Your coding practice companion</div>
+      <div class="sub">AI study & interview practice companion</div>
     </div>
     <button id="settingsBtn" class="icon-btn" title="Settings">⚙</button>
   </header>
 
   <main>
     <section class="hero">
-      <div class="eyebrow">PRACTICE MODE</div>
-      <h1>Think first.<br><span>Code better.</span></h1>
-      <p>Paste a problem, add your attempt, and get guidance without jumping straight to the answer.</p>
+      <div class="eyebrow">ALL-ROUND PRACTICE</div>
+      <h1>Think first.<br><span>Answer better.</span></h1>
+      <p>Practice coding, MCQs, maths, reasoning, English and core CS subjects in one side panel.</p>
     </section>
 
     <nav class="mode-tabs" aria-label="Practice mode">
-      <button class="mode-tab active" data-view="coachView">Coach</button>
-      <button class="mode-tab" data-view="mockView">Mock Lab</button>
+      <button class="mode-tab active" data-view="tutorView">AI Tutor</button>
+      <button class="mode-tab" data-view="mockView">MCQ Lab</button>
     </nav>
 
-    <div id="coachView">
-    <section class="card">
-      <div class="section-head"><label for="problem">Problem</label><button id="clearBtn" class="text-btn">Clear</button></div>
-      <textarea id="problem" placeholder="Paste a coding problem here…"></textarea>
-    </section>
+    <div id="tutorView">
+      <section class="card">
+        <div class="section-head"><label for="subject">Subject</label><select id="subject">
+          <option value="general">General</option>
+          <option value="coding">Coding / DSA</option>
+          <option value="maths">Maths</option>
+          <option value="reasoning">Logical Reasoning</option>
+          <option value="aptitude">Quantitative Aptitude</option>
+          <option value="english">English / Verbal</option>
+          <option value="dbms">DBMS</option>
+          <option value="os">Operating Systems</option>
+          <option value="cn">Computer Networks</option>
+          <option value="oop">OOP</option>
+          <option value="python">Python</option>
+        </select></div>
+        <div class="task-grid">
+          <button class="task active" data-task="explain">📖 Explain</button>
+          <button class="task" data-task="solve">🧠 Solve</button>
+          <button class="task" data-task="hint">💡 Hint</button>
+          <button class="task" data-task="check">✅ Check answer</button>
+          <button class="task" data-task="practice">🎯 Generate practice</button>
+        </div>
+      </section>
 
-    <section class="card">
-      <div class="section-head">
-        <label for="code">Your code <span class="muted">(optional)</span></label>
-        <select id="language">
-          <option>Python</option><option>JavaScript</option><option>Java</option><option>C++</option><option>C</option>
-        </select>
-      </div>
-      <textarea id="code" class="code" spellcheck="false" placeholder="Paste your attempt here…"></textarea>
-    </section>
+      <section class="card">
+        <div class="section-head"><label for="problem">Question / Problem</label><button id="clearBtn" class="text-btn">Clear</button></div>
+        <textarea id="problem" placeholder="Paste a question, MCQ, maths problem, reasoning puzzle, theory question, or coding problem…"></textarea>
+      </section>
 
-    <section class="actions">
-      <button class="action primary" data-mode="hint"><span>💡</span><b>Give me a hint</b><small>Progressive guidance</small></button>
-      <button class="action" data-mode="approach"><span>🧭</span><b>Explain approach</b><small>Reasoning before code</small></button>
-      <button class="action" data-mode="debug"><span>🐛</span><b>Review my code</b><small>Find bugs & edge cases</small></button>
-      <button class="action" data-mode="complexity"><span>⏱</span><b>Check complexity</b><small>Time & space</small></button>
-    </section>
+      <section class="card">
+        <div class="section-head">
+          <label for="attempt">Your answer / work <span class="muted">(optional)</span></label>
+          <select id="language">
+            <option>Python</option><option>JavaScript</option><option>Java</option><option>C++</option><option>C</option><option>Text</option>
+          </select>
+        </div>
+        <textarea id="attempt" class="code" spellcheck="false" placeholder="For coding: paste code. For maths/reasoning/MCQs: paste your working or answer."></textarea>
+      </section>
 
+      <button id="askBtn" class="ask-btn">Ask CodeSidekick <span>→</span></button>
     </div>
 
     <div id="mockView" class="hidden">
       <section class="card mock-card">
         <div class="section-head">
-          <div><label>Mock Lab</label><div class="muted mock-sub">Timed MCQ practice — independent of any live assessment.</div></div>
+          <div><label>MCQ Lab</label><div class="muted mock-sub">Timed local practice across common test topics.</div></div>
           <span id="mockStatus" class="pill">Ready</span>
         </div>
         <div class="mock-controls">
-          <label>Topic
-            <select id="mockTopic">
-              <option value="mixed">Mixed</option>
-              <option value="dsa">DSA</option>
-              <option value="dbms">DBMS</option>
-              <option value="os">Operating Systems</option>
-              <option value="cn">Computer Networks</option>
-              <option value="oop">OOP</option>
-              <option value="python">Python</option>
-            </select>
-          </label>
-          <label>Questions
-            <select id="mockCount"><option>5</option><option>10</option></select>
-          </label>
-          <label>Time
-            <select id="mockMinutes"><option value="5">5 min</option><option value="10">10 min</option><option value="15">15 min</option></select>
-          </label>
+          <label>Topic<select id="mockTopic">
+            <option value="mixed">Mixed</option><option value="coding">Coding / DSA</option><option value="maths">Maths</option>
+            <option value="reasoning">Reasoning</option><option value="aptitude">Aptitude</option><option value="english">English</option>
+            <option value="dbms">DBMS</option><option value="os">OS</option><option value="cn">Networks</option><option value="oop">OOP</option>
+          </select></label>
+          <label>Questions<select id="mockCount"><option>5</option><option>10</option><option>15</option></select></label>
+          <label>Time<select id="mockMinutes"><option value="5">5 min</option><option value="10">10 min</option><option value="15">15 min</option><option value="20">20 min</option></select></label>
         </div>
         <button id="startMock" class="save">Start practice set</button>
       </section>
@@ -84,6 +91,7 @@
         <div class="question-meta"><span id="questionNumber">Question 1/5</span><span id="timer">05:00</span></div>
         <h2 id="questionText"></h2>
         <div id="options" class="options"></div>
+        <div id="explanation" class="explanation hidden"></div>
         <button id="nextQuestion" class="save" disabled>Next question</button>
       </section>
 
@@ -95,14 +103,14 @@
     </div>
 
     <section id="resultCard" class="card result hidden">
-      <div class="section-head"><label id="resultTitle">Coach</label><button id="copyBtn" class="text-btn">Copy</button></div>
+      <div class="section-head"><label id="resultTitle">AI Tutor</label><button id="copyBtn" class="text-btn">Copy</button></div>
       <div id="result" class="result-body"></div>
     </section>
 
     <section id="settings" class="card settings hidden">
       <div class="section-head"><label>Settings</label><button id="closeSettings" class="text-btn">Close</button></div>
       <label class="field">Backend URL<input id="apiUrl" placeholder="https://your-api.example.com"></label>
-      <p class="muted note">Leave empty to use built-in demo responses. Keep API keys on your server, never inside the extension.</p>
+      <p class="muted note">Leave empty for local demo mode. Keep provider API keys on your server, never in the extension.</p>
       <button id="saveSettings" class="save">Save settings</button>
     </section>
 
