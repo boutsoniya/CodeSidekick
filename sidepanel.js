@@ -24,7 +24,7 @@ async function saveDraft() {
 }
 async function ask(mode) {
   await saveDraft();
-  if (!problem.value.trim()) return toast("Add a coding problem first.");
+  if (!problem.value.trim()) return toast("Add a question or prompt first.");
   resultCard.classList.remove("hidden");
   resultTitle.textContent = titles[mode];
   result.textContent = "Thinking…";
@@ -58,18 +58,21 @@ $("#saveSettings").onclick = async () => { await chrome.storage.local.set({apiUr
 load();
 
 const QUESTION_BANK = [
-  {t:"dsa",q:"Which data structure gives average O(1) lookup by key?",o:["Array","Hash table","Linked list","Heap"],a:1,e:"Hash tables use hashing to provide average constant-time key lookup."},
-  {t:"dsa",q:"A binary search on a sorted array has time complexity of:",o:["O(1)","O(log n)","O(n)","O(n log n)"],a:1,e:"Each step halves the remaining search space."},
-  {t:"dbms",q:"Which normal form removes partial dependency on a composite key?",o:["1NF","2NF","3NF","BCNF"],a:1,e:"2NF removes partial functional dependencies on part of a candidate key."},
-  {t:"dbms",q:"Which SQL clause filters groups after aggregation?",o:["WHERE","ORDER BY","HAVING","LIMIT"],a:2,e:"HAVING filters grouped rows after aggregate calculations."},
+  {t:"math",q:"If 20% of a number is 36, what is the number?",o:["120","160","180","200"],a:2,e:"36 / 0.2 = 180."},
+  {t:"math",q:"A train travels 240 km in 4 hours. Average speed?",o:["40 km/h","50 km/h","60 km/h","80 km/h"],a:2,e:"240 / 4 = 60 km/h."},
+  {t:"math",q:"Next number: 2, 6, 12, 20, 30, ?",o:["36","40","42","44"],a:2,e:"Differences are 4,6,8,10, so next is +12 = 42."},
+  {t:"reasoning",q:"If CAT is coded as DBU, how is DOG coded?",o:["EPH","EOG","FPH","DPG"],a:0,e:"Each letter moves one position forward."},
+  {t:"reasoning",q:"Find the odd one out.",o:["Square","Triangle","Circle","Cube"],a:3,e:"Cube is 3D; the others are 2D."},
+  {t:"reasoning",q:"A is taller than B. B is taller than C. What must be true?",o:["C is taller than A","A is taller than C","B is shorter than C","A and C are equal"],a:1,e:"A > B and B > C implies A > C."},
+  {t:"english",q:"Closest meaning of 'concise'?",o:["Confusing","Brief","Aggressive","Detailed"],a:1,e:"Concise means brief and clear."},
+  {t:"english",q:"Choose the correct sentence.",o:["She don't like tea.","She doesn't likes tea.","She doesn't like tea.","She not like tea."],a:2,e:"After doesn't, use the base verb: like."},
+  {t:"dsa",q:"Which data structure gives average O(1) lookup by key?",o:["Array","Hash table","Linked list","Heap"],a:1,e:"Hash tables provide average constant-time lookup."},
+  {t:"dsa",q:"Binary search on a sorted array has complexity:",o:["O(1)","O(log n)","O(n)","O(n²)"],a:1,e:"Each comparison halves the search space."},
+  {t:"dbms",q:"Which SQL clause filters groups after aggregation?",o:["WHERE","ORDER BY","HAVING","LIMIT"],a:2,e:"HAVING filters grouped results after aggregation."},
   {t:"os",q:"Which scheduling algorithm uses a fixed time quantum?",o:["FCFS","Round Robin","SJF","Priority"],a:1,e:"Round Robin gives each ready process a time slice."},
-  {t:"os",q:"A process waiting indefinitely for a resource is most directly associated with:",o:["Deadlock","Paging","Thrashing","Spooling"],a:0,e:"Deadlock occurs when processes wait for resources held by one another."},
-  {t:"cn",q:"Which protocol is connection-oriented?",o:["UDP","IP","TCP","ARP"],a:2,e:"TCP establishes a connection and provides ordered, reliable delivery."},
-  {t:"cn",q:"DNS primarily translates:",o:["IP to MAC","Domain names to IP addresses","HTTP to HTTPS","Ports to processes"],a:1,e:"DNS resolves human-readable domain names to network addresses."},
-  {t:"oop",q:"Bundling data with methods that operate on that data is:",o:["Inheritance","Encapsulation","Polymorphism","Abstraction"],a:1,e:"Encapsulation combines state and behavior behind a controlled interface."},
-  {t:"oop",q:"Method overriding is primarily associated with:",o:["Compile-time polymorphism","Runtime polymorphism","Encapsulation","Composition"],a:1,e:"A subclass can provide a specialized implementation selected at runtime."},
-  {t:"python",q:"What is the result of len({1,1,2,3}) in Python?",o:["4","3","2","Error"],a:1,e:"A set stores unique values, so duplicates are removed."},
-  {t:"python",q:"Which Python type is immutable?",o:["list","dict","set","tuple"],a:3,e:"Tuples are immutable sequences."}
+  {t:"cn",q:"Which protocol is connection-oriented?",o:["UDP","IP","TCP","ARP"],a:2,e:"TCP establishes a connection and provides ordered delivery."},
+  {t:"oop",q:"Bundling data with methods that operate on that data is:",o:["Inheritance","Encapsulation","Polymorphism","Abstraction"],a:1,e:"Encapsulation combines state and behavior."},
+  {t:"python",q:"What is len({1,1,2,3}) in Python?",o:["4","3","2","Error"],a:1,e:"Sets contain unique values, so the result is 3."}
 ];
 
 const mockView=$("#mockView"), coachView=$("#coachView");
