@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CodeSidekick</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand"><span class="brand-mark">CS</span><span>CodeSidekick</span></div>
+      <div class="sub">Your coding practice companion</div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" title="Settings">⚙</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">PRACTICE MODE</div>
+      <h1>Think first.<br><span>Code better.</span></h1>
+      <p>Paste a problem, add your attempt, and get guidance without jumping straight to the answer.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-head"><label for="problem">Problem</label><button id="clearBtn" class="text-btn">Clear</button></div>
+      <textarea id="problem" placeholder="Paste a coding problem here…"></textarea>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <label for="code">Your code <span class="muted">(optional)</span></label>
+        <select id="language">
+          <option>Python</option><option>JavaScript</option><option>Java</option><option>C++</option><option>C</option>
+        </select>
+      </div>
+      <textarea id="code" class="code" spellcheck="false" placeholder="Paste your attempt here…"></textarea>
+    </section>
+
+    <section class="actions">
+      <button class="action primary" data-mode="hint"><span>💡</span><b>Give me a hint</b><small>Progressive guidance</small></button>
+      <button class="action" data-mode="approach"><span>🧭</span><b>Explain approach</b><small>Reasoning before code</small></button>
+      <button class="action" data-mode="debug"><span>🐛</span><b>Review my code</b><small>Find bugs & edge cases</small></button>
+      <button class="action" data-mode="complexity"><span>⏱</span><b>Check complexity</b><small>Time & space</small></button>
+    </section>
+
+    <section id="resultCard" class="card result hidden">
+      <div class="section-head"><label id="resultTitle">Coach</label><button id="copyBtn" class="text-btn">Copy</button></div>
+      <div id="result" class="result-body"></div>
+    </section>
+
+    <section id="settings" class="card settings hidden">
+      <div class="section-head"><label>Settings</label><button id="closeSettings" class="text-btn">Close</button></div>
+      <label class="field">Backend URL<input id="apiUrl" placeholder="https://your-api.example.com"></label>
+      <p class="muted note">Leave empty to use built-in demo responses. Keep API keys on your server, never inside the extension.</p>
+      <button id="saveSettings" class="save">Save settings</button>
+    </section>
+
+    <div id="toast" class="toast"></div>
+  </main>
+
+  <footer><span>CodeSidekick</span><span>Practice • Learn • Improve</span></footer>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
