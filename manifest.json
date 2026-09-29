@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "CodeSidekick",
+  "version": "0.1.0",
+  "description": "AI coding practice companion for explanations, hints, debugging, and interview preparation.",
+  "permissions": ["sidePanel", "storage"],
+  "action": {
+    "default_title": "Open CodeSidekick"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {}
+}
