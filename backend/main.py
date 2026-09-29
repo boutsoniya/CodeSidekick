@@ -21,9 +21,12 @@ class CoachRequest(BaseModel):
 
 MODE_INSTRUCTIONS = {
     "hint": "Give one useful hint only. Do not reveal the complete solution. Encourage the learner to reason.",
-    "approach": "Explain the algorithmic approach step-by-step before giving code. Do not dump a complete solution unless explicitly requested.",
-    "debug": "Review the submitted code for correctness, edge cases, bugs, and likely failure cases. Be specific and educational.",
-    "complexity": "Analyze the submitted code or proposed approach and explain time and auxiliary-space complexity. Point to the operations that determine the complexity.",
+    "approach": "Explain the reasoning step-by-step. Adapt to maths, reasoning, verbal, CS fundamentals, MCQs, or coding.",
+    "debug": "Review the learner answer/code for mistakes, edge cases, and assumptions. Be specific and educational.",
+    "complexity": "For coding questions analyze time and auxiliary-space complexity; for non-coding questions explain the reasoning complexity only when relevant.",
+    "solve": "Solve the question step-by-step. For MCQs, explain why the correct option is correct and briefly eliminate the alternatives. For maths, show the calculation. For reasoning/verbal, show the logic.",
+    "explain": "Teach the concept in simple language, then give a short worked example.",
+    "check": "Check the learner answer against the question, identify mistakes, and explain the correction without being dismissive.",
 }
 
 @app.get("/health")
@@ -51,7 +54,7 @@ Language:
 Learner's code:
 {req.code or "(none)"}
 
-Keep the response concise, concrete, and easy to act on. Avoid pretending to execute code you did not execute."""
+Keep the response concise, concrete, and easy to act on. Match the learner’s language when practical. Avoid pretending to execute code or use tools you did not execute."""
 
     payload = {
         "model": model,
