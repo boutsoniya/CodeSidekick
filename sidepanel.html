@@ -22,6 +22,12 @@
       <p>Paste a problem, add your attempt, and get guidance without jumping straight to the answer.</p>
     </section>
 
+    <nav class="mode-tabs" aria-label="Practice mode">
+      <button class="mode-tab active" data-view="coachView">Coach</button>
+      <button class="mode-tab" data-view="mockView">Mock Lab</button>
+    </nav>
+
+    <div id="coachView">
     <section class="card">
       <div class="section-head"><label for="problem">Problem</label><button id="clearBtn" class="text-btn">Clear</button></div>
       <textarea id="problem" placeholder="Paste a coding problem here…"></textarea>
@@ -43,6 +49,50 @@
       <button class="action" data-mode="debug"><span>🐛</span><b>Review my code</b><small>Find bugs & edge cases</small></button>
       <button class="action" data-mode="complexity"><span>⏱</span><b>Check complexity</b><small>Time & space</small></button>
     </section>
+
+    </div>
+
+    <div id="mockView" class="hidden">
+      <section class="card mock-card">
+        <div class="section-head">
+          <div><label>Mock Lab</label><div class="muted mock-sub">Timed MCQ practice — independent of any live assessment.</div></div>
+          <span id="mockStatus" class="pill">Ready</span>
+        </div>
+        <div class="mock-controls">
+          <label>Topic
+            <select id="mockTopic">
+              <option value="mixed">Mixed</option>
+              <option value="dsa">DSA</option>
+              <option value="dbms">DBMS</option>
+              <option value="os">Operating Systems</option>
+              <option value="cn">Computer Networks</option>
+              <option value="oop">OOP</option>
+              <option value="python">Python</option>
+            </select>
+          </label>
+          <label>Questions
+            <select id="mockCount"><option>5</option><option>10</option></select>
+          </label>
+          <label>Time
+            <select id="mockMinutes"><option value="5">5 min</option><option value="10">10 min</option><option value="15">15 min</option></select>
+          </label>
+        </div>
+        <button id="startMock" class="save">Start practice set</button>
+      </section>
+
+      <section id="questionCard" class="card question-card hidden">
+        <div class="question-meta"><span id="questionNumber">Question 1/5</span><span id="timer">05:00</span></div>
+        <h2 id="questionText"></h2>
+        <div id="options" class="options"></div>
+        <button id="nextQuestion" class="save" disabled>Next question</button>
+      </section>
+
+      <section id="mockResult" class="card result hidden">
+        <div class="section-head"><label>Practice result</label><span id="scorePill" class="pill"></span></div>
+        <div id="mockSummary" class="result-body"></div>
+        <button id="retryMock" class="save">Try another set</button>
+      </section>
+    </div>
 
     <section id="resultCard" class="card result hidden">
       <div class="section-head"><label id="resultTitle">Coach</label><button id="copyBtn" class="text-btn">Copy</button></div>
