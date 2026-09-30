@@ -25,6 +25,7 @@
     <nav class="mode-tabs" aria-label="Practice mode">
       <button class="mode-tab active" data-view="tutorView">AI Tutor</button>
       <button class="mode-tab" data-view="mockView">MCQ Lab</button>
+      <button class="mode-tab" data-view="researchView">Research Lab</button>
     </nav>
 
     <div id="tutorView">
@@ -99,6 +100,32 @@
         <div class="section-head"><label>Study result</label><span id="scorePill" class="pill"></span></div>
         <div id="mockSummary" class="result-body"></div>
         <button id="retryMock" class="save">Try another set</button>
+      </section>
+    </div>
+
+    <div id="researchView" class="hidden">
+      <section class="card research-card">
+        <div class="section-head">
+          <div><label>Research Lab</label><div class="muted research-sub">Browser-extension observability sandbox</div></div>
+          <span class="pill">LOCAL</span>
+        </div>
+        <p class="research-intro">Explore observable extension properties and browser-style events. Events are simulated for research; nothing here hides or suppresses monitoring signals.</p>
+        <div class="signal-grid">
+          <div class="signal"><span>Extension resource</span><b id="extUrlStatus">Available</b></div>
+          <div class="signal"><span>Manifest</span><b id="manifestStatus">Loaded</b></div>
+          <div class="signal"><span>Permissions</span><b id="permissionStatus">Loaded</b></div>
+          <div class="signal"><span>Panel state</span><b id="panelStatus">Open</b></div>
+        </div>
+        <div class="section-head research-head"><label>Event simulator</label><button id="clearResearch" class="text-btn">Clear</button></div>
+        <div class="research-actions">
+          <button class="research-btn" data-event="focus">Focus</button>
+          <button class="research-btn" data-event="blur">Blur</button>
+          <button class="research-btn" data-event="visible">Visible</button>
+          <button class="research-btn" data-event="hidden">Hidden</button>
+          <button class="research-btn" data-event="tab-switch">Tab switch</button>
+          <button class="research-btn" data-event="navigation">Navigation</button>
+        </div>
+        <div id="eventLog" class="event-log"><div class="log-empty">No simulated events yet.</div></div>
       </section>
     </div>
 
