@@ -130,6 +130,25 @@ function finishStudy(timedOut=false){
 }
 document.querySelectorAll(".mode-tab").forEach(btn=>btn.addEventListener("click",()=>{
   document.querySelectorAll(".mode-tab").forEach(b=>b.classList.remove("active")); btn.classList.add("active");
-  const view=btn.dataset.view; coachView.classList.toggle("hidden",view!=="coachView"); studyView.classList.toggle("hidden",view!=="studyView");
+  const view=btn.dataset.view; coachView.classList.toggle("hidden",view!=="coachView"); studyView.classList.toggle("hidden",view!=="studyView"); researchView.classList.toggle("hidden",view!=="researchView");
 }));
 $("#startStudy").onclick=startStudy; $("#nextQuestion").onclick=nextQuestion; $("#retryStudy").onclick=startStudy;
+
+
+const researchView=$("#researchView");
+const eventLog=$("#eventLog");
+const researchEvents=[];
+function addResearchEvent(type){
+  const entry={type,time:new Date().toLocaleTimeString()};
+  researchEvents.unshift(entry);
+  if(researchEvents.length>20) researchEvents.pop();
+  eventLog.innerHTML=researchEvents.length
+    ? researchEvents.map(e=>`<div class="log-row"><span class="log-dot"></span><b>${e.type}</b><time>${e.time}</time></div>`).join("")
+    : '<div class="log-empty">No simulated events yet.</div>';
+}
+document.querySelectorAll(".research-btn").forEach(btn=>btn.addEventListener("click",()=>addResearchEvent(btn.dataset.event)));
+$("#clearResearch").onclick=()=>{researchEvents.length=0;eventLog.innerHTML='<div class="log-empty">No simulated events yet.</div>';};
+$("#extUrlStatus").textContent=chrome.runtime.getURL("sidepanel.html").split("/").slice(0,3).join("/")+"/…";
+$("#manifestStatus").textContent=chrome.runtime.getManifest().manifest_version+" / MV3";
+$("#permissionStatus").textContent=(chrome.runtime.getManifest().permissions||[]).join(", ")||"none";
+document.addEventListener("visibilitychange",()=>addResearchEvent(document.visibilityState==="visible"?"actual visibility: visible":"actual visibility: hidden"));
