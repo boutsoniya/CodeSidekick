@@ -96,10 +96,10 @@ function startStudy(){
 function updateTimer(){
   const left=Math.max(0,study.deadline-Date.now()), sec=Math.ceil(left/1000);
   $("#timer").textContent=String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");
-  if(sec<=0){clearInterval(study.timer); finishMock(true);}
+  if(sec<=0){clearInterval(study.timer); finishStudy(true);}
 }
 function renderQuestion(){
-  const item=study.items[study.index]; if(!item) return finishMock();
+  const item=study.items[study.index]; if(!item) return finishStudy();
   $("#questionNumber").textContent=`Question ${study.index+1}/${study.items.length}`;
   $("#questionText").textContent=item.q; $("#nextQuestion").disabled=true;
   $("#nextQuestion").textContent=study.index===study.items.length-1?"Finish set":"Next question";
@@ -120,7 +120,7 @@ function nextQuestion(){
   if(study.selected===null) return;
   study.selected=null; study.index++; renderQuestion();
 }
-function finishMock(timedOut=false){
+function finishStudy(timedOut=false){
   clearInterval(study.timer); $("#questionCard").classList.add("hidden");
   $("#studyStatus").textContent=timedOut?"Time up":"Complete";
   $("#studyResult").classList.remove("hidden");
