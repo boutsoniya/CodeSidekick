@@ -52,10 +52,10 @@ footer { padding:9px 16px 13px; color:#99958b; font-size:9px; display:flex; just
 .mode-tabs{display:flex;gap:4px;background:#e9e5dc;border-radius:9px;padding:3px;margin-bottom:12px}
 .mode-tab{flex:1;border:0;background:transparent;color:var(--muted);padding:7px;border-radius:7px;font-size:11px;font-weight:750;cursor:pointer}
 .mode-tab.active{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(37,32,24,.08)}
-.mock-sub{font-size:9px;margin-top:2px}
-.mock-controls{display:grid;grid-template-columns:1.2fr .8fr .9fr;gap:7px;margin:10px 0}
-.mock-controls label{display:flex;flex-direction:column;gap:4px}
-.mock-controls select{width:100%}
+.study-sub{font-size:9px;margin-top:2px}
+.study-controls{display:grid;grid-template-columns:1.2fr .8fr .9fr;gap:7px;margin:10px 0}
+.study-controls label{display:flex;flex-direction:column;gap:4px}
+.study-controls select{width:100%}
 .pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:#f4f1eb;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:750;color:var(--muted)}
 .question-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;font-weight:750;margin-bottom:9px}
 #timer{font-variant-numeric:tabular-nums;color:var(--warm)}
